@@ -32,6 +32,12 @@ Protected Module Xtend_WebRequest
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function Host(Extends request As WebRequest) As String
+		  Return request.Header("Host")
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0, CompatibilityFlags = (TargetWeb and (Target32Bit or Target64Bit))
 		Function IsContentTypeJSON(Extends request As WebRequest) As Boolean
 		  // Checks the body REQUEST
@@ -77,14 +83,17 @@ Protected Module Xtend_WebRequest
 	#tag Method, Flags = &h0
 		Function PathInfo(Extends request As WebRequest) As Dictionary
 		  // Converts the WebRequest.Path property into a dictionary
-		  // This allows URL paths to contain /id:12345/product:shoe
-		  // The left side of the ":" contains the KEY and the right side contains the VALUE
-		  // If the value is numeric then it is stored as an integer, otherwise as a string
-		  // URL Encoding is removed, so spaces are preserved -not recommended to use spaces-
+		  // This allows URL paths to contain /id/12345/product/shoe
+		  // id = KEY
+		  // 12345 = VALUE
+		  // product = KEY
+		  // shoe = VALUE
+		  // etc.
 		  
 		  Var info As New Dictionary
 		  Var pathItems(), keyVal, key, value As String
-		  Var valInt As Integer
+		  Var valInt, skipIndex As Integer
+		  skipIndex = -1
 		  
 		  #If Not DebugBuild Then
 		    #Pragma BackgroundTasks False // Speed up, stop thread switching temporary
@@ -98,14 +107,24 @@ Protected Module Xtend_WebRequest
 		    
 		    If pathItems.Count > 0 Then
 		      
+		      If pathItems(pathItems.FirstRowIndex) = "" Then 
+		        pathItems.RemoveRowAt(pathItems.FirstRowIndex)
+		      End If
+		      
 		      For itemIndex As Integer = pathItems.FirstRowIndex To pathItems.LastRowIndex
 		        
-		        keyVal = DecodeURLComponent( pathItems(itemIndex), Encodings.UTF8 )
+		        If itemIndex = skipIndex Then
+		          skipIndex = -1
+		          Continue // This was our previous value, skip it.
+		        End If
 		        
-		        If keyVal <> "" Then
+		        key = pathItems(itemIndex)
+		        
+		        If itemIndex < pathItems.LastRowIndex Then
 		          
-		          key = keyVal.NthField(":", 1)
-		          value = keyVal.NthField(":", 2)
+		          skipIndex = (itemIndex + 1)
+		          
+		          value = pathItems(skipIndex)
 		          
 		          If IsNumeric(value) Then
 		            valInt = value.ToInteger
@@ -114,6 +133,8 @@ Protected Module Xtend_WebRequest
 		            info.Value(key) = value
 		          End If
 		          
+		        Else // Only key
+		          info.Value(key) = ""
 		        End If
 		        
 		      Next
@@ -124,6 +145,26 @@ Protected Module Xtend_WebRequest
 		  
 		  Return info
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub RedirectPermanently(Extends request As WebRequest, ToURL As String)
+		  request.Reset
+		  
+		  request.Header("Content-Type") = ""
+		  request.Header("Location") = ToURL // Redirect to this url
+		  request.Status = 301 // Moved permanently
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub RedirectTemporary(Extends request As WebRequest, ToURL As String)
+		  request.Reset
+		  
+		  request.Header("Content-Type") = ""
+		  request.Header("Location") = ToURL // Redirect to this url
+		  request.Status = 302 // Moved temporary
+		End Sub
 	#tag EndMethod
 
 
