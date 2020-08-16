@@ -60,12 +60,6 @@ Protected Module Xtend_Global
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub Test()
-		  
-		End Sub
-	#tag EndMethod
-
 
 	#tag Note, Name = Xtends
 		

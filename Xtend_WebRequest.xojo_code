@@ -7,7 +7,7 @@ Protected Module Xtend_WebRequest
 		  
 		  Var AcceptHeader As String = request.GetRequestHeader("Accept")
 		  
-		  If AcceptHeader.BeginsWith("application/json") Then
+		  If AcceptHeader.IndexOf("application/json") >= 0 Then
 		    Return True
 		  End If
 		  
