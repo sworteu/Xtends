@@ -1,6 +1,6 @@
 #tag Module
 Protected Module Xtend_WebApplication
-	#tag CompatibilityFlags = (TargetWeb and (Target32Bit or Target64Bit))
+	#tag CompatibilityFlags = ( TargetWeb and ( Target32Bit or Target64Bit ) )
 	#tag Note, Name = Xtend_WebApplication
 		
 		Contains extention methods for the WebApplication class.
