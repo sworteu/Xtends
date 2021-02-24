@@ -1,6 +1,6 @@
 #tag Module
 Protected Module Xtend_App
-	#tag Method, Flags = &h0
+	#tag Method, Flags = &h0, CompatibilityFlags = API2Only
 		Function VersionString(Extends a As App, ShowStageCode As Boolean = False) As String
 		  // WORKS ON ALL XOJO PROJECT TYPES
 		  // @Returns String

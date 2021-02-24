@@ -1,9 +1,10 @@
 #tag Module
 Protected Module Xtend_DateInterval
 	#tag Method, Flags = &h0, CompatibilityFlags = (TargetConsole and (Target32Bit or Target64Bit)) or  (TargetWeb and (Target32Bit or Target64Bit)) or  (TargetDesktop and (Target32Bit or Target64Bit))
-		Function CentiSeconds(Extends interval As DateInterval) As Integer
-		  // Converts the NanoSeconds to CentiSeconds
+		Function xCentiSeconds(Extends interval As DateInterval) As Integer
+		  // Converts the DateInterval.NanoSeconds to CentiSeconds
 		  // 0.01 of a second
+		  
 		  Var ns As Integer = interval.Nanoseconds
 		  Var cs As Integer = (ns / 10000000)
 		  
@@ -12,9 +13,10 @@ Protected Module Xtend_DateInterval
 	#tag EndMethod
 
 	#tag Method, Flags = &h0, CompatibilityFlags = (TargetConsole and (Target32Bit or Target64Bit)) or  (TargetWeb and (Target32Bit or Target64Bit)) or  (TargetDesktop and (Target32Bit or Target64Bit))
-		Function DeciSeconds(Extends interval As DateInterval) As Integer
-		  // Converts the NanoSeconds to DeciSeconds
+		Function xDeciSeconds(Extends interval As DateInterval) As Integer
+		  // Converts the DateInterval.NanoSeconds to DeciSeconds
 		  // 0.1 of a second
+		  
 		  Var ns As Integer = interval.Nanoseconds
 		  Var cs As Integer = (ns / 100000000)
 		  
@@ -23,8 +25,8 @@ Protected Module Xtend_DateInterval
 	#tag EndMethod
 
 	#tag Method, Flags = &h0, CompatibilityFlags = (TargetConsole and (Target32Bit or Target64Bit)) or  (TargetWeb and (Target32Bit or Target64Bit)) or  (TargetDesktop and (Target32Bit or Target64Bit))
-		Function MicroSeconds(Extends interval As DateInterval) As Integer
-		  // Converts the NanoSeconds to MicroSecond
+		Function xMicroSeconds(Extends interval As DateInterval) As Integer
+		  // Converts the DateInterval.NanoSeconds to MicroSecond
 		  // 0.000001 of a second
 		  Var ns As Integer = interval.Nanoseconds
 		  Var cs As Integer = (ns / 1000)
@@ -34,8 +36,8 @@ Protected Module Xtend_DateInterval
 	#tag EndMethod
 
 	#tag Method, Flags = &h0, CompatibilityFlags = (TargetConsole and (Target32Bit or Target64Bit)) or  (TargetWeb and (Target32Bit or Target64Bit)) or  (TargetDesktop and (Target32Bit or Target64Bit))
-		Function MilliSeconds(Extends interval As DateInterval) As Integer
-		  // Converts the NanoSeconds to MicroSeconds
+		Function xMilliSeconds(Extends interval As DateInterval) As Integer
+		  // Converts the DateInterval.NanoSeconds to MicroSeconds
 		  // 0.001 of a second 
 		  Var ns As Integer = interval.Nanoseconds
 		  Var cs As Integer = (ns / 1000000)

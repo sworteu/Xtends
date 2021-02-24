@@ -1,6 +1,6 @@
 #tag Module
 Protected Module Xtend_ListBox
-	#tag CompatibilityFlags = (TargetDesktop and (Target32Bit or Target64Bit))
+	#tag CompatibilityFlags = ( TargetDesktop and ( Target32Bit or Target64Bit ) )
 	#tag Method, Flags = &h0, CompatibilityFlags = API2Only and ( (TargetDesktop and (Target32Bit or Target64Bit)) )
 		Sub Find(Extends control As ListBox, SearchFor As String, InColumn As Integer)
 		  // Searches and selects the listbox row with given column that contains the SearchFor String

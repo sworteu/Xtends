@@ -1,7 +1,7 @@
 #tag Module
 Protected Module Xtend_String
 	#tag Method, Flags = &h0
-		Function BeginsWithX(Extends Value As String, ParamArray Comparers As String) As Boolean
+		Function xBeginsWithOneOf(Extends Value As String, ParamArray Comparers As String) As Boolean
 		  If value = "" Then 
 		    Return True
 		  End If
@@ -21,7 +21,7 @@ Protected Module Xtend_String
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function EndsWithX(Extends Value As String, ParamArray Comparers As String) As Boolean
+		Function xEndsWithOneOf(Extends Value As String, ParamArray Comparers As String) As Boolean
 		  If value = "" Then 
 		    Return True
 		  End If
@@ -41,7 +41,7 @@ Protected Module Xtend_String
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function EqualsToX(Extends Value As String, ParamArray CompareTo As String) As Boolean
+		Function xEqualsToOneOf(Extends Value As String, ParamArray CompareTo As String) As Boolean
 		  // Compares value to all given CompareTo values, if any is equal it will return true
 		  
 		  #Pragma BackgroundTasks False
@@ -59,7 +59,7 @@ Protected Module Xtend_String
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub TrimItemsX(Extends  ByRef Value As String, ParamArray TrimItems As String)
+		Sub xTrimItems(Extends  ByRef Value As String, ParamArray TrimItems As String)
 		  // Trims any of the given TrimItems strings off the value string if 
 		  // a value of TrimItems is at the beginning an/or at the end of the string
 		  // It will only trim the first found value left and right, it won't keep trimming
@@ -81,7 +81,7 @@ Protected Module Xtend_String
 		      
 		      If value.BeginsWith(item) Then
 		        
-		        value = value.Right(value.Bytes - item.Bytes)
+		        value = value.Right(value.Length - item.Length)
 		        isTrimmedLeft = True
 		        
 		      End If
@@ -92,7 +92,7 @@ Protected Module Xtend_String
 		      
 		      If value.EndsWith(item) Then
 		        
-		        value = value.Left(value.Bytes - item.Bytes)
+		        value = value.Left(value.Length - item.Length)
 		        isTrimmedRight = True
 		        
 		      End If
@@ -100,6 +100,80 @@ Protected Module Xtend_String
 		    End If
 		    
 		    If isTrimmedLeft And isTrimmedRight Then
+		      Return
+		    End If
+		    
+		  Next
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub xTrimItemsLeft(Extends  ByRef Value As String, ParamArray TrimItems As String)
+		  // Trims any of the given TrimItems strings off the value string if 
+		  // a value of TrimItems is at the beginning an/or at the end of the string
+		  // It will only trim the first found value left and right, it won't keep trimming
+		  
+		  If value = "" Then
+		    // Unable to trim
+		    Return
+		  End If
+		  
+		  Var isTrimmedLeft As Boolean
+		  isTrimmedLeft = False
+		  
+		  #Pragma BackgroundTasks False
+		  
+		  For Each item As String In TrimItems
+		    
+		    If Not isTrimmedLeft Then
+		      
+		      If value.BeginsWith(item) Then
+		        
+		        value = value.Right(value.Length - item.Length)
+		        isTrimmedLeft = True
+		        
+		      End If
+		      
+		    End If
+		    
+		    If isTrimmedLeft Then
+		      Return
+		    End If
+		    
+		  Next
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub xTrimItemsRight(Extends  ByRef Value As String, ParamArray TrimItems As String)
+		  // Trims any of the given TrimItems strings off the value string if 
+		  // a value of TrimItems is at the beginning an/or at the end of the string
+		  // It will only trim the first found value left and right, it won't keep trimming
+		  
+		  If value = "" Then
+		    // Unable to trim
+		    Return
+		  End If
+		  
+		  Var isTrimmedRight As Boolean
+		  isTrimmedRight = False
+		  
+		  #Pragma BackgroundTasks False
+		  
+		  For Each item As String In TrimItems
+		    
+		    If Not isTrimmedRight Then
+		      
+		      If value.EndsWith(item) Then
+		        
+		        value = value.Left(value.Length - item.Length)
+		        isTrimmedRight = True
+		        
+		      End If
+		      
+		    End If
+		    
+		    If isTrimmedRight Then
 		      Return
 		    End If
 		    

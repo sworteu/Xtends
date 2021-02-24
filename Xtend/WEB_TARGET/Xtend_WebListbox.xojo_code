@@ -1,6 +1,6 @@
 #tag Module
 Protected Module Xtend_WebListbox
-	#tag CompatibilityFlags = (TargetWeb and (Target32Bit or Target64Bit))
+	#tag CompatibilityFlags = ( TargetWeb and ( Target32Bit or Target64Bit ) )
 	#tag Method, Flags = &h0, CompatibilityFlags = API2Only and ( (TargetWeb and (Target32Bit or Target64Bit)) )
 		Function Find(Extends control As WebListBox, SearchFor As String, InColumn As Integer, SearchType As SearchTypes = SearchTypes.Exact) As Integer
 		  // Searches and selects the listbox row with given column that contains the SearchFor String

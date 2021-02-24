@@ -4,10 +4,9 @@ Protected Module Xtend_SQLiteDatabase
 	#tag Method, Flags = &h0, CompatibilityFlags = (TargetConsole and (Target32Bit or Target64Bit)) or  (TargetWeb and (Target32Bit or Target64Bit)) or  (TargetDesktop and (Target32Bit or Target64Bit))
 		Sub DeleteAllRows(Extends db As SQLiteDatabase, FromTable As String)
 		  // Deletes all the rows from the given table name
+		  // Wrap the function in try..catch..e As DatabaseException .. end Try
 		  
-		  Var query As String
-		  
-		  query = "DELETE FROM "+FromTable.Trim+";"
+		  Var query As String = "DELETE FROM " + FromTable.Trim + ";"
 		  
 		  db.ExecuteSQL(query)
 		  
@@ -94,7 +93,7 @@ Protected Module Xtend_SQLiteDatabase
 	#tag EndMethod
 
 	#tag Method, Flags = &h0, CompatibilityFlags = (TargetConsole and (Target32Bit or Target64Bit)) or  (TargetWeb and (Target32Bit or Target64Bit)) or  (TargetDesktop and (Target32Bit or Target64Bit))
-		Sub Replace(Extends db As SQLiteDatabase, Table As String, Fields As JSONItem)
+		Sub ReplaceInto(Extends db As SQLiteDatabase, Table As String, Fields As JSONItem)
 		  // Inserts if not existing or overwrites a row in the table
 		  // Fields.Value("column") = "value" 
 		  // "column" must be a string value, with the exact name of the column.
