@@ -3,7 +3,7 @@ Begin Window DesktopWindow
    Backdrop        =   0
    BackgroundColor =   &cFFFFFF00
    Composite       =   False
-   DefaultLocation =   "0"
+   DefaultLocation =   0
    FullScreen      =   False
    HasBackgroundColor=   False
    HasCloseButton  =   True
@@ -21,7 +21,7 @@ Begin Window DesktopWindow
    MinimumWidth    =   64
    Resizeable      =   True
    Title           =   "Untitled"
-   Type            =   "0"
+   Type            =   0
    Visible         =   True
    Width           =   600
    Begin ExtendLoaderCanvas Canvas1
@@ -118,7 +118,7 @@ Begin Window DesktopWindow
       TabIndex        =   4
       TabPanelIndex   =   0
       TabStop         =   True
-      TextAlignment   =   "0"
+      TextAlignment   =   0
       TextColor       =   &c00000000
       Tooltip         =   ""
       Top             =   20
@@ -161,7 +161,7 @@ Begin Window DesktopWindow
       TabIndex        =   5
       TabPanelIndex   =   0
       TabStop         =   True
-      TextAlignment   =   "0"
+      TextAlignment   =   0
       TextColor       =   &c00000000
       Tooltip         =   ""
       Top             =   20

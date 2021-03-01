@@ -458,6 +458,14 @@ Inherits Canvas
 			Type="String"
 			EditorType=""
 		#tag EndViewProperty
+		#tag ViewProperty
+			Name="DegreeStep"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
 #tag EndClass

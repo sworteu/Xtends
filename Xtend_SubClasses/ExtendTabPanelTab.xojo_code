@@ -66,12 +66,20 @@ Protected Class ExtendTabPanelTab
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Caption"
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InitialValue=""
 			Type="String"
 			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Caption"
+			Visible=true
+			Group="ID"
+			InitialValue=""
+			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
@@ -106,11 +114,19 @@ Protected Class ExtendTabPanelTab
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="mCloseButton"
+			Name="CloseButton"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ShouldInvalidate"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

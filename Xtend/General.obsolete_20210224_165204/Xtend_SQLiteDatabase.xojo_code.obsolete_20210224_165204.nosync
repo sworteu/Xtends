@@ -7,7 +7,7 @@ Protected Module Xtend_SQLiteDatabase
 		  
 		  Var query As String
 		  
-		  query = "DELETE FROM " + FromTable.Trim + ";"
+		  query = "DELETE FROM "+FromTable.Trim+";"
 		  
 		  db.ExecuteSQL(query)
 		  
@@ -43,13 +43,13 @@ Protected Module Xtend_SQLiteDatabase
 		      values.AddRow( WithFields.Value(key) )
 		    Next 
 		    
-		    query = "DELETE FROM " + FromTable.Trim + " WHERE" + fields + ";"
+		    query = "DELETE FROM "+FromTable.Trim+" WHERE"+fields+";"
 		    
 		    db.ExecuteSQL(query, values)
 		    
 		  Else
 		    // Delete all rows
-		    query = "DELETE FROM " + FromTable.Trim + ";"
+		    query = "DELETE FROM "+FromTable+";"
 		    
 		    db.ExecuteSQL(query)
 		    
@@ -84,9 +84,10 @@ Protected Module Xtend_SQLiteDatabase
 		    End If
 		    
 		    
+		    
 		  Next
 		  
-		  query = "INSERT INTO " + Table.Trim + " (" + String.FromArray(columns, ", ") + ") values(" + String.FromArray(placeholders, ", ") + ");"
+		  query = "INSERT INTO "+Table.Trim+" (" + String.FromArray(columns, ", ") + ") values("+ String.FromArray(placeholders, ", ") +");"
 		  
 		  db.ExecuteSQL(query, values)
 		End Sub
