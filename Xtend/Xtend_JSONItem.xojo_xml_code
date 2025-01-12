@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2021r3.1" FormatVersion="2" MinIDEVersion="20210300">
+<block type="Module" ID="208093183">
+ <ObjName>Xtend_JSONItem</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>LoadFrom</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>147449855</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub LoadFrom(Extends json As JSONItem, file As FolderItem)</SourceLine>
+   <SourceLine>// Creates the file read from a text file</SourceLine>
+   <SourceLine>// Raises an IOException if there was an issue with the file reading.</SourceLine>
+   <SourceLine>// Raises an JSONException if the json was invalid or unparsable.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var stream As TextInputStream = TextInputStream.Open(file)</SourceLine>
+   <SourceLine>Var data As String = stream.ReadAll(Encodings.UTF8)</SourceLine>
+   <SourceLine>stream.Close</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If data.Encoding = Nil Then</SourceLine>
+   <SourceLine>data = data.DefineEncoding(Encodings.UTF8)</SourceLine>
+   <SourceLine>ElseIf data.Encoding &lt;&gt; Encodings.UTF8 Then</SourceLine>
+   <SourceLine>data = data.ConvertEncoding(Encodings.UTF8)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If data = "" Then</SourceLine>
+   <SourceLine>json.RemoveAll // Empty item (object)</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>json.Load(data) // Object or array</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends json As JSONItem, file As FolderItem</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SaveAs</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1134624767</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub SaveAs(Extends json As JSONItem, file As FolderItem)</SourceLine>
+   <SourceLine>// Saves the file to the given folderitem, overwrites the file if already existing.</SourceLine>
+   <SourceLine>// Raises an IOException if there was an issue with the file writing.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var stream As TextOutputStream = TextOutputStream.Create(file)</SourceLine>
+   <SourceLine>Var data As String = json.ToString</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If data.Encoding = Nil Then</SourceLine>
+   <SourceLine>data = data.DefineEncoding(Encodings.UTF8)</SourceLine>
+   <SourceLine>ElseIf data.Encoding &lt;&gt; Encodings.UTF8 Then</SourceLine>
+   <SourceLine>data = data.ConvertEncoding(Encodings.UTF8)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>stream.Write data</SourceLine>
+   <SourceLine>stream.Close</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends json As JSONItem, file As FolderItem</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ToDateTime</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1672087551</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToDateTime(Extends json As JSONItem) As DateTime</SourceLine>
+   <SourceLine>// Converts the jsonItem to a DateTime, note that the values must have been set.</SourceLine>
+   <SourceLine>// Use the Xtend_DateTime.ToJSON(Extends value As DateTime) As JSONItem method </SourceLine>
+   <SourceLine>// to convert the DateTime to a JSONItem.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Year as Integer, </SourceLine>
+   <SourceLine>// Month as Integer, </SourceLine>
+   <SourceLine>// Day as Integer, </SourceLine>
+   <SourceLine>// Hour as Integer = 0, </SourceLine>
+   <SourceLine>// Minute as Integer = 0, </SourceLine>
+   <SourceLine>// Second as Integer = 0, </SourceLine>
+   <SourceLine>// NanoSecond as Integer = 0, </SourceLine>
+   <SourceLine>// TimeZone as TimeZone = Nil</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var j_year As Integer   = json.Lookup("Year", 0).IntegerValue</SourceLine>
+   <SourceLine>Var j_Month As Integer  = json.Lookup("Month", 0).IntegerValue</SourceLine>
+   <SourceLine>Var j_day As Integer    = json.Lookup("Day", 0).IntegerValue</SourceLine>
+   <SourceLine>Var j_hour As Integer   = json.Lookup("Hour", 0).IntegerValue</SourceLine>
+   <SourceLine>Var j_minute As Integer = json.Lookup("Minute", 0).IntegerValue</SourceLine>
+   <SourceLine>Var j_second As Integer = json.Lookup("Second", 0).IntegerValue</SourceLine>
+   <SourceLine>Var j_nanosecond As Integer = json.Lookup("NanoSecond", 0).IntegerValue</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var j_timezone_seconds_from_gmt As Integer = json.Lookup("TimeZoneSecondsFromGMT", 0).IntegerValue</SourceLine>
+   <SourceLine>Var j_timezone As New TimeZone(j_timezone_seconds_from_gmt)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var result As New DateTime(j_year, j_month, j_day, j_hour, j_minute, j_second, j_nanosecond, j_timezone)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return result</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends json As JSONItem</ItemParams>
+  <ItemResult>DateTime</ItemResult>
+ </Method>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>

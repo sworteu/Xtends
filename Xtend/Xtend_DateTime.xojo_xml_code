@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2021r2.1" FormatVersion="2" MinIDEVersion="20200200">
+<block type="Module" ID="1212356607">
+ <ObjName>Xtend_DateTime</ObjName>
+ <ObjContainerID>1808793599</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>DateTimeFromMicroSecondsX</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1871521791</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function DateTimeFromMicroSecondsX(Value As UInt64, tz As TimeZone = Nil) As DateTime</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var UnixTimestamp As Double = (value / 1000000)</SourceLine>
+   <SourceLine>Var stamp As New DateTime(UnixTimestamp, If(tz &lt;&gt; Nil, tz, TimeZone.Current))</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return stamp</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Value As UInt64, tz As TimeZone = Nil</ItemParams>
+  <ItemResult>DateTime</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>DateTimeFromMillisecondsX</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>2020284415</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function DateTimeFromMillisecondsX(Value As UInt64, tz As TimeZone = Nil) As DateTime</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var UnixTimestamp As Double = (value / 1000)</SourceLine>
+   <SourceLine>Var stamp As New DateTime(UnixTimestamp, If(tz &lt;&gt; Nil, tz, TimeZone.Current))</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return stamp</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Value As UInt64, tz As TimeZone = Nil</ItemParams>
+  <ItemResult>DateTime</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ShortDateTimeX</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1005338623</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ShortDateTimeX(Extends d As DateTime) As String</SourceLine>
+   <SourceLine>// Returns only the short date</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return d.ToString(DateTime.FormatStyles.Short, DateTime.FormatStyles.Short)</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends d As DateTime</ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ShortDateX</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>986517503</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ShortDateX(Extends d As DateTime) As String</SourceLine>
+   <SourceLine>// Returns only the short date</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return d.ToString(DateTime.FormatStyles.Short, DateTime.FormatStyles.None)</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends d As DateTime</ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ShortTimeX</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>891297791</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ShortTimeX(Extends d As DateTime) As String</SourceLine>
+   <SourceLine>// Returns only the short time</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return d.ToString(DateTime.FormatStyles.None, DateTime.FormatStyles.Short)</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends d As DateTime</ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ToJSON</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1270116351</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToJSON(Extends value As DateTime) As JSONItem</SourceLine>
+   <SourceLine>// Converts the DateTime to a JSONItem.</SourceLine>
+   <SourceLine>// Use the Xtend_JSONItem.ToDateTime(Extends json As JSONItem) As DateTime </SourceLine>
+   <SourceLine>// method to convert the JSONItem back to a DateTime.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var json As New JSONItem</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>json.Value("Year") = value.Year</SourceLine>
+   <SourceLine>json.Value("Month") = value.Month</SourceLine>
+   <SourceLine>json.Value("Day") = value.Day</SourceLine>
+   <SourceLine>json.Value("Hour") = value.Hour</SourceLine>
+   <SourceLine>json.Value("Minute") = value.Minute</SourceLine>
+   <SourceLine>json.Value("Second") = value.Second</SourceLine>
+   <SourceLine>json.Value("NanoSecond") = value.Nanosecond</SourceLine>
+   <SourceLine>json.Value("SecondsFrom1970") = value.SecondsFrom1970</SourceLine>
+   <SourceLine>json.Value("IsDaylightSavingsTime") = value.IsDaylightSavingsTime</SourceLine>
+   <SourceLine>json.Value("SQLDate") = value.SQLDate</SourceLine>
+   <SourceLine>json.Value("SQLDateTime") = value.SQLDateTime</SourceLine>
+   <SourceLine>json.Value("WeekOfYear") = value.WeekOfYear</SourceLine>
+   <SourceLine>json.Value("TimeZoneSecondsFromGMT") = value.Timezone.SecondsFromGMT</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return json</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends value As DateTime</ItemParams>
+  <ItemResult>JSONItem</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ToMicroseconds</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1531226111</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToMicroseconds(Extends value As DateTime) As Int64</SourceLine>
+   <SourceLine>Var timestamp As Double = value.SecondsFrom1970</SourceLine>
+   <SourceLine>Const MICROSECONDS_PER_SECOND As Double = 1000000.0</SourceLine>
+   <SourceLine>Var sum As Double = (timestamp * MICROSECONDS_PER_SECOND)</SourceLine>
+   <SourceLine>Var asMicroseconds As Int64 = CType(sum, Int64)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return asMicroseconds</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends value As DateTime</ItemParams>
+  <ItemResult>Int64</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ToNanoseconds</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>847106047</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToNanoseconds(Extends value As DateTime) As Int64</SourceLine>
+   <SourceLine>Var timestamp As Double = value.SecondsFrom1970</SourceLine>
+   <SourceLine>Var asMicroseconds As Int64 = (timestamp * 100000000)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return asMicroseconds</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends value As DateTime</ItemParams>
+  <ItemResult>Int64</ItemResult>
+ </Method>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>

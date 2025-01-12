@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2021r3" FormatVersion="2" MinIDEVersion="20150400">
+<block type="Module" ID="1155467263">
+ <ObjName>Xtend_String</ObjName>
+ <ObjContainerID>792471551</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>Contains</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1479901183</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Contains(Extends value As String, find As String, CaseSensitive As Boolean = False) As Boolean</SourceLine>
+   <SourceLine>// Return true if value contains the substring 'find'.</SourceLine>
+   <SourceLine>// By "contains" we mean case-insensitive, encoding-savvy containment (unless CaseSensitive = True)</SourceLine>
+   <SourceLine>// as with InStr.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>if find = "" then return true</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If CaseSensitive Then</SourceLine>
+   <SourceLine>Return value.IndexOf(0, find, ComparisonOptions.CaseSensitive) &gt; -1</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>Return value.IndexOf(0, find, ComparisonOptions.CaseInsensitive) &gt; -1</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends value As String, find As String, CaseSensitive As Boolean = False</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>URLSafeBase64Decode</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1161105407</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function URLSafeBase64Decode(Extends Input As String) As String</SourceLine>
+   <SourceLine>// Decodes a URL-safe Base64 string back to it's normal value (non-base-encoded)</SourceLine>
+   <SourceLine>Var b64 As String = DecodeBase64(Input,Encodings.UTF8)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>b64 = b64.ReplaceAll("_","+")</SourceLine>
+   <SourceLine>b64 = b64.ReplaceAll(".","/")</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return b64</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends Input As String</ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>URLSafeBase64Encode</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>571938815</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function URLSafeBase64Encode(Extends Input As String) As String</SourceLine>
+   <SourceLine>// Encodes a normal string into a URL-safe base64 encoded string</SourceLine>
+   <SourceLine>Var b64 As String = EncodeBase64(Input,0) // 0 = no linebreaks</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>b64 = b64.ReplaceAll("+","_")</SourceLine>
+   <SourceLine>b64 = b64.ReplaceAll("/",".")</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return b64</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends Input As String</ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>UTF8</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1767806975</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function UTF8(Extends InputString As String) As String</SourceLine>
+   <SourceLine>If InputString.Encoding = Encodings.UTF8 Then</SourceLine>
+   <SourceLine>Return InputString</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>ElseIf InputString.Encoding = Nil Then</SourceLine>
+   <SourceLine>// Encoding is unknown to the application but known by the developer</SourceLine>
+   <SourceLine>Return InputString.DefineEncoding(Encodings.UTF8)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>ElseIf InputString.Encoding &lt;&gt; Encodings.UTF8 Then</SourceLine>
+   <SourceLine>// Encoding is not UTF8, so convert to UTF-8</SourceLine>
+   <SourceLine>Return InputString.ConvertEncoding(Encodings.UTF8)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Encoding is already UTF-8</SourceLine>
+   <SourceLine>Return InputString</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends InputString As String</ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Params</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1032562687</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Params(Extends source As String, ParamArray values As String) As String</SourceLine>
+   <SourceLine>// Replace all "%0", "%1", "%2" etc strings with the values in order.</SourceLine>
+   <SourceLine>// Multiple values of "%0" will be replaced with the first item (index) in values etc</SourceLine>
+   <SourceLine>// Example: </SourceLine>
+   <SourceLine>// Var s As String = "Hello %0, this is %1 changing a %2"</SourceLine>
+   <SourceLine>// s.Params("world", "Xojo", "String")</SourceLine>
+   <SourceLine>// The output will be: "Hello world, this is Xojo changing a String"</SourceLine>
+   <SourceLine>// Note: %[num] will not be replaced if there are no more values. </SourceLine>
+   <SourceLine>// Example:</SourceLine>
+   <SourceLine>// Var s As String = "Hello %0, this is %1 changing a %2. %3 and %4 are ok."</SourceLine>
+   <SourceLine>// s.Params("world", "Xojo", "String", "Index 3")</SourceLine>
+   <SourceLine>// The output will be: "Hello world, this is Xojo changing a String. Index 3 and %4 are ok."</SourceLine>
+   <SourceLine>// The string "%4" (index 4) is not set since there was no value provided.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Dim itemIndex As Integer = 0</SourceLine>
+   <SourceLine>Dim value As String</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>For Each value In values</SourceLine>
+   <SourceLine>source = source.ReplaceAll("%" + itemIndex.ToString, value)</SourceLine>
+   <SourceLine>itemIndex = itemIndex + 1</SourceLine>
+   <SourceLine>Next</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return source</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends source As String, ParamArray values As String</ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Contains</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>888674303</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Contains(Extends values() As String, ParamArray findAny As String) As Boolean</SourceLine>
+   <SourceLine>// Retruns true if ParamArray findAny As string is found in values() As String.</SourceLine>
+   <SourceLine>// If one in findAny is found it will return true on the first found value.</SourceLine>
+   <SourceLine>// If none in findAny is found, it will retrun false. </SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>For Each find As String In findAny</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If values.IndexOf(find) &gt; -1 Then</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Next find</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends values() As String, ParamArray findAny As String</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>inArray</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>815886335</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function inArray(Extends value As String, baseArray() As String) As Boolean</SourceLine>
+   <SourceLine>// Searches for the extended value in the parsed array.</SourceLine>
+   <SourceLine>// Returns true if value As string is found in baseArray() As String.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return (baseArray.IndexOf(value) &gt; -1)</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends value As String, baseArray() As String</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>notInArray</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>953104383</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function notInArray(Extends value As String, baseArray() As String) As Boolean</SourceLine>
+   <SourceLine>// Searches for the extended value in the parsed array.</SourceLine>
+   <SourceLine>// Returns true if value As string is found in baseArray() As String.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return Not (baseArray.IndexOf(value) &gt; -1)</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends value As String, baseArray() As String</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2021r2.1" FormatVersion="2" MinIDEVersion="20150400">
+<block type="Module" ID="1685813247">
+ <ObjName>Xtend_URLConnection</ObjName>
+ <ObjContainerID>792471551</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>SendJSON</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1141047295</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub SendJSON(Extends conn As URLConnection, Method As String, json As JSONItem, URL As String, timeout As Integer = 60)</SourceLine>
+   <SourceLine>conn.SetRequestContent(json.ToString, "application/json")</SourceLine>
+   <SourceLine>conn.Send(Method, URL, timeout)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends conn As URLConnection, Method As String, json As JSONItem, URL As String, timeout As Integer = 60</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SendJSONSync</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>2108411903</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function SendJSONSync(Extends conn As URLConnection, Method As String, json As JSONItem, URL As String, Timeout As Integer = 60) As String</SourceLine>
+   <SourceLine>conn.SetRequestContent(json.ToString, "application/json")</SourceLine>
+   <SourceLine>Return conn.SendSync(Method, URL, timeout)</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends conn As URLConnection, Method As String, json As JSONItem, URL As String, Timeout As Integer = 60</ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SendJSONSync</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>903405567</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function SendJSONSync(Extends conn As URLConnection, Method As String, json As JSONItem, URL As String, Timeout As Integer = 60) As JSONItem</SourceLine>
+   <SourceLine>// This may trow a JSONException (from JSONItem)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>conn.SetRequestContent(json.ToString, "application/json")</SourceLine>
+   <SourceLine>Var content As String = conn.SendSync(Method, URL, timeout)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If content = "" Then</SourceLine>
+   <SourceLine>Return New JSONItem("{}")</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// set encdoing to (json required) utf-8 if not already.</SourceLine>
+   <SourceLine>If content.Encoding = Nil Then</SourceLine>
+   <SourceLine>content = content.DefineEncoding(Encodings.UTF8)</SourceLine>
+   <SourceLine>ElseIf content.Encoding &lt;&gt; Encodings.UTF8 Then</SourceLine>
+   <SourceLine>content = content.ConvertEncoding(Encodings.UTF8)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Return the json item.</SourceLine>
+   <SourceLine>Var response As New JSONItem(content)</SourceLine>
+   <SourceLine>Return response</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends conn As URLConnection, Method As String, json As JSONItem, URL As String, Timeout As Integer = 60</ItemParams>
+  <ItemResult>JSONItem</ItemResult>
+ </Method>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2021r2.1" FormatVersion="2" MinIDEVersion="20200200">
+<block type="Module" ID="2122524671">
+ <ObjName>Xtend_Dictionary</ObjName>
+ <ObjContainerID>1808793599</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>ToJSON</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>863776767</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToJSON(Extends d As Dictionary, Expanded As Boolean = False) As String</SourceLine>
+   <SourceLine>Try</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var json As String = GenerateJSON(d, Expanded)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If json.Encoding = Encodings.UTF8 Then</SourceLine>
+   <SourceLine>Return json</SourceLine>
+   <SourceLine>ElseIf json.Encoding = Nil then </SourceLine>
+   <SourceLine>json = json.DefineEncoding(Encodings.UTF8)</SourceLine>
+   <SourceLine>ElseIf json.Encoding &lt;&gt; Encodings.UTF8 Then</SourceLine>
+   <SourceLine>json = json.ConvertEncoding(Encodings.UTF8)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return json</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Catch e As InvalidArgumentException</SourceLine>
+   <SourceLine>Return ""</SourceLine>
+   <SourceLine>End Try</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends d As Dictionary, Expanded As Boolean = False</ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>

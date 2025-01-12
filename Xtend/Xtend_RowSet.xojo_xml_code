@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2021r3" FormatVersion="2" MinIDEVersion="20150400">
+<block type="Module" ID="33165311">
+ <ObjName>Xtend_RowSet</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>ToJSONItem</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1633392639</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToJSONItem(Extends rows As RowSet, Columns() As String) As JSONItem</SourceLine>
+   <SourceLine>Var json_root As JSONItem</SourceLine>
+   <SourceLine>Var rowCount As Integer = rows.RowCount</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If RowCount = 0 Then</SourceLine>
+   <SourceLine>rows.Close</SourceLine>
+   <SourceLine>Return Nil</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var columnCount As Integer = rows.ColumnCount</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If rows.RowCount = 1 Then</SourceLine>
+   <SourceLine>// Single object (row)</SourceLine>
+   <SourceLine>Var json_row as JSONItem</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var column_allowed As Boolean, column_name As String, col As DatabaseColumn</SourceLine>
+   <SourceLine>Var columnIndex As Integer, columnLastIndex As Integer = rows.LastColumnIndex</SourceLine>
+   <SourceLine>For columnIndex = 0 To columnLastIndex</SourceLine>
+   <SourceLine>col = rows.ColumnAt(columnIndex)</SourceLine>
+   <SourceLine>column_name = col.Name</SourceLine>
+   <SourceLine>column_allowed = (columns.IndexOf(column_name) &gt; -1)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If column_allowed Then</SourceLine>
+   <SourceLine>json_row.Value(column_name) = col.Value</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Next columnIndex</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>json_root = json_root</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>ElseIf rowCount &gt; 1 Then</SourceLine>
+   <SourceLine>// Array of Objects (rows)</SourceLine>
+   <SourceLine>json_root = New JSONItem("[]")</SourceLine>
+   <SourceLine>Var json_row as JSONItem</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>While Not rows.AfterLastRow</SourceLine>
+   <SourceLine>json_row = New JSONItem("{}")</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var column_allowed As Boolean, column_name As String, col As DatabaseColumn</SourceLine>
+   <SourceLine>Var columnIndex As Integer, columnLastIndex As Integer = rows.LastColumnIndex</SourceLine>
+   <SourceLine>For columnIndex = 0 To columnLastIndex</SourceLine>
+   <SourceLine>col = rows.ColumnAt(columnIndex)</SourceLine>
+   <SourceLine>column_name = col.Name</SourceLine>
+   <SourceLine>column_allowed = (columns.IndexOf(column_name) &gt; -1)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If column_allowed Then</SourceLine>
+   <SourceLine>json_row.Value(column_name) = col.Value</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Next columnIndex</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>json_root.Add(json_row)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>rows.MoveToNextRow</SourceLine>
+   <SourceLine>Wend</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>rows.Close</SourceLine>
+   <SourceLine>Return json_root</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends rows As RowSet, Columns() As String</ItemParams>
+  <ItemResult>JSONItem</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ToJSONItem</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>131248127</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToJSONItem(Extends rows As RowSet) As JSONItem</SourceLine>
+   <SourceLine>Var json_root As JSONItem</SourceLine>
+   <SourceLine>Var rowCount As Integer = rows.RowCount</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If RowCount = 0 Then</SourceLine>
+   <SourceLine>Return Nil</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var columnCount As Integer = rows.ColumnCount</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If rows.RowCount = 1 Then</SourceLine>
+   <SourceLine>// Single object (row)</SourceLine>
+   <SourceLine>Var json_row as JSONItem</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var column_allowed As Boolean, column_name As String, col As DatabaseColumn</SourceLine>
+   <SourceLine>Var columnIndex As Integer, columnLastIndex As Integer = rows.LastColumnIndex</SourceLine>
+   <SourceLine>For columnIndex = 0 To columnLastIndex</SourceLine>
+   <SourceLine>col = rows.ColumnAt(columnIndex)</SourceLine>
+   <SourceLine>column_name = col.Name</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>json_row.Value(column_name) = col.Value</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Next columnIndex</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>json_root = json_root</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>ElseIf rowCount &gt; 1 Then</SourceLine>
+   <SourceLine>// Array of Objects (rows)</SourceLine>
+   <SourceLine>json_root = New JSONItem("[]")</SourceLine>
+   <SourceLine>Var json_row as JSONItem</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>While Not rows.AfterLastRow</SourceLine>
+   <SourceLine>json_row = New JSONItem("{}")</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var column_allowed As Boolean, column_name As String, col As DatabaseColumn</SourceLine>
+   <SourceLine>Var columnIndex As Integer, columnLastIndex As Integer = rows.LastColumnIndex</SourceLine>
+   <SourceLine>For columnIndex = 0 To columnLastIndex</SourceLine>
+   <SourceLine>col = rows.ColumnAt(columnIndex)</SourceLine>
+   <SourceLine>column_name = col.Name</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>json_row.Value(column_name) = col.Value</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Next columnIndex</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>json_root.Add(json_row)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>rows.MoveToNextRow</SourceLine>
+   <SourceLine>Wend</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return json_root</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends rows As RowSet</ItemParams>
+  <ItemResult>JSONItem</ItemResult>
+ </Method>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>

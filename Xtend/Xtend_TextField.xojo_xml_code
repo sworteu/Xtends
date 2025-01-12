@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2021r2.1" FormatVersion="2" MinIDEVersion="20200200">
+<block type="Module" ID="250851327">
+ <ObjName>Xtend_TextField</ObjName>
+ <ObjContainerID>1808793599</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility>( TargetDesktop and ( Target32Bit or Target64Bit ) )</Compatibility>
+ <Method>
+  <ItemName>allTextFieldsNotEmpty</ItemName>
+  <Compatibility>(TargetDesktop and (Target32Bit or Target64Bit))</Compatibility>
+  <Visible>1</Visible>
+  <PartID>2109896703</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function allTextFieldsNotEmpty(ParamArray fields() As TextField) As Boolean</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Check if there are fields to loop trough:</SourceLine>
+   <SourceLine>If fields &lt;&gt; Nil And Fields.Count &gt; 0 Then</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>For Each field As TextField In fields</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If field.Text = "" Then</SourceLine>
+   <SourceLine>// At least one field had no data</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Next field</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// All fields must have had data</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Return the default:</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>ParamArray fields() As TextField</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>

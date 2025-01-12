@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2021r3" FormatVersion="2" MinIDEVersion="20200200">
+<block type="Module" ID="572975103">
+ <ObjName>Xtend_WebResponse</ObjName>
+ <ObjContainerID>1381445631</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility>( TargetWeb and ( Target32Bit or Target64Bit ) )</Compatibility>
+ <Method>
+  <ItemName>SetJSONMimeType</ItemName>
+  <Compatibility>(TargetWeb and (Target32Bit or Target64Bit))</Compatibility>
+  <Visible>1</Visible>
+  <PartID>1388185599</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub SetJSONMimeType(Extends Response As WebResponse)</SourceLine>
+   <SourceLine>// Sets the mimetype to application/json</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Response.MIMEType = "application/json"</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends Response As WebResponse</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>WithJSON</ItemName>
+  <Compatibility>(TargetWeb and (Target32Bit or Target64Bit))</Compatibility>
+  <Visible>1</Visible>
+  <PartID>1729427455</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function WithJSON(Extends Response As WebResponse, json As JSONItem, Status As Integer = -1) As Boolean</SourceLine>
+   <SourceLine>// Responds with a jsonitem converted to a string with the correct mime-type</SourceLine>
+   <SourceLine>// And a given status code</SourceLine>
+   <SourceLine>// Returns True always to return from App.HandleURL directly using Return Response.WithJSON(...)</SourceLine>
+   <SourceLine>// Store the return value in a property or use Call Response.WithJSON(...) to ignore the value.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Response.MIMEType = "application/json"</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If Status &gt; -1 Then</SourceLine>
+   <SourceLine>// When above -1 it uses the given status.</SourceLine>
+   <SourceLine>// Otherwise uses the Response.Status</SourceLine>
+   <SourceLine>Response.Status = Status</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var content As String </SourceLine>
+   <SourceLine>If json &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>content = json.ToString</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>content = "{}"</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Response.Write content</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Return true since we handled the request</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends Response As WebResponse, json As JSONItem, Status As Integer = -1</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>
